@@ -1,4 +1,4 @@
-# update notifications
+# Update notifications
 notifications:
   email:
     on_success: never
@@ -7,13 +7,11 @@ notifications:
 language: c
 
 sudo: required
-dist: trusty
 
 addons:
   apt:
-#    sources:
-#      - debian-sid
     packages:
+      - ninja-build
       - gcc-arm-none-eabi
       - libnewlib-arm-none-eabi
 
@@ -26,7 +24,7 @@ os:
 
 # Build steps
 script:
-  # real build
   - mkdir build
   - cd build
-  - cmake .. && cmake --build .
+  - cmake -DCMAKE_TOOLCHAIN_FILE=./cmake/arm-none-eabi-gcc.cmake -G "Ninja" ..
+  - cmake --build .
