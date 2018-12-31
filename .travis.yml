@@ -1,0 +1,32 @@
+# update notifications
+notifications:
+  email:
+    on_success: never
+
+# Enable C support
+language: c
+
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+#    sources:
+#      - debian-sid
+    packages:
+      - gcc-arm-none-eabi
+      - libnewlib-arm-none-eabi
+
+# Compiler selection
+compiler:
+  - gcc
+
+os:
+  - linux
+
+# Build steps
+script:
+  # real build
+  - mkdir build
+  - cd build
+  - cmake .. && cmake --build .
