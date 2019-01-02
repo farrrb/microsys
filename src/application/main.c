@@ -49,10 +49,10 @@ int main(void)
   timer_init(TIMER_CH_0);
   timer_start(TIMER_CH_0);
 
-  // initialize uart
+  // initialize UART
   uart_init(UART_BAUDRATE_115200);
   uart_send_string(CLEAR_SCREEN);
-  uart_send_string("Booting MicroSys...");
+  uart_send_string("Booting MicroSys...\r\n");
 
   // initialize display
   display_init();
@@ -68,6 +68,7 @@ int main(void)
     ctr++;
     if (ctr == (BLINK_TICKS / 2))
     {
+      uart_send_char('.');
       display_clear();
     }
     if (ctr == (BLINK_TICKS))

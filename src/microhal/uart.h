@@ -69,5 +69,7 @@
 void uart_init(uint32_t baudrate);
 void uart_send_char(const char ch);
 void uart_send_string(const char *str);
+void uart_send_hex(uint32_t number);
+void uart_send_dec(int32_t number);
 
 #endif
