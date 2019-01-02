@@ -5,11 +5,14 @@
 
 #include "delay.h"
 #include "timer.h"
+#include "uart.h"
 
 #include "display.h"
 
-#define BLINK_TICKS (16384)
+#define BLINK_TICKS (32768)
 #define DELAY_TICKS (10)
+
+#define CLEAR_SCREEN "\x1b[2J\x1b[H"
 
 // Test Variables
 const uint32_t const_data = 0xADDE; // -> .rodata (FLASH)
@@ -46,6 +49,11 @@ int main(void)
   timer_init(TIMER_CH_0);
   timer_start(TIMER_CH_0);
 
+  // initialize uart
+  uart_init(UART_BAUDRATE_115200);
+  uart_send_string(CLEAR_SCREEN);
+  uart_send_string("Booting MicroSys...");
+
   // initialize display
   display_init();
   draw_heart();
@@ -58,11 +66,11 @@ int main(void)
 #if BLINK_TICKS > 0
     // blink
     ctr++;
-    if (ctr > BLINK_TICKS)
+    if (ctr == (BLINK_TICKS / 2))
     {
       display_clear();
     }
-    if (ctr > (2 * BLINK_TICKS))
+    if (ctr == (BLINK_TICKS))
     {
       draw_heart();
       ctr = 0;
