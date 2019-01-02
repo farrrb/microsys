@@ -1,4 +1,9 @@
-/* Linker Script for NRF51822-QFAA-R rev3 */
+/*
+ * Copyright (c) 2018 Fabian Zahn - 0xFAB
+ * See provided LICENSE file for more information
+ *
+ * Linker Script for NRF51822-QFAA-R rev3
+ */
 
 /* Defines the programs entry point */
 ENTRY(Reset_Handler)

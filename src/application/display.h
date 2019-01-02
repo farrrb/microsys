@@ -1,4 +1,7 @@
-///< Display Abstraction
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Display Abstraction
 
 #ifndef DISPLAY_H__
 #define DISPLAY_H__

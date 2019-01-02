@@ -1,4 +1,7 @@
-///< Register Access (read, write)
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Register Access (read, write)
 
 #ifndef REGISTER_H__
 #define REGISTER_H__

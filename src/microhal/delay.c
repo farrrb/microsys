@@ -1,3 +1,6 @@
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+
 #include "delay.h"
 
 static uint32_t delay_ticks = 0;

@@ -1,4 +1,7 @@
-///< Symbols defined by the Linker Script
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Symbols defined by the Linker Script
 
 #ifndef LINKER_SCRIPT_H
 #define LINKER_SCRIPT_H

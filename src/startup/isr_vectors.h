@@ -1,4 +1,7 @@
-///< Interface Header
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Interrupt Vector Table - Interface Header
 
 #ifndef ISR_VECTORS_H
 #define ISR_VECTORS_H

@@ -1,3 +1,8 @@
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// GPIO Interface
+
 #ifndef GPIO_H__
 #define GPIO_H__
 

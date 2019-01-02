@@ -1,4 +1,7 @@
-///< Startup Configuration
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Startup Configuration
 
 #ifndef STARTUP_CONFIG_H
 #define STARTUP_CONFIG_H

@@ -1,3 +1,8 @@
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// Timer Interface
+
 #ifndef TIMER_H__
 #define TIMER_H__
 

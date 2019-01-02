@@ -1,4 +1,7 @@
-// Stack
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+//
+/// Stack
 
 #include <stdint.h>
 
