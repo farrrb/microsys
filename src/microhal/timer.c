@@ -54,7 +54,7 @@ void Timer_init(TimerChannel_t channel)
 
   Timer_modules[channel]->MODE      = 0; // Timer mode
   Timer_modules[channel]->BITMODE   = 3; // 32-bit
-  Timer_modules[channel]->PRESCALER = 0; // 16 MHz timer clock
+  Timer_modules[channel]->PRESCALER = 0; // 16 MHz timer clock. 1 Tick = 62.5 ns
 }
 
 void Timer_start(TimerChannel_t channel)

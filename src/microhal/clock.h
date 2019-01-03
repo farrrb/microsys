@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// See provided LICENSE file for more information
+///
+/// \todo System clock initialization
+///
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef CLOCK_H__
+#define CLOCK_H__
+
+#include "microhal.h"
+
+void Clock_init(void);
+
+#endif

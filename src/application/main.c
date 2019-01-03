@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 
+#include "clock.h"
 #include "delay.h"
 #include "timer.h"
 #include "uart.h"
@@ -46,6 +47,9 @@ void drawHeart(void)
 int main(void)
 {
   uint32_t ctr = 0;
+
+  // Initialize clock
+  Clock_init();
 
   // initialize timer
   Timer_init(TIMER_CH_0);
