@@ -6,8 +6,8 @@
 #ifndef DELAY_H__
 #define DELAY_H__
 
-#include <stdint.h>
+#include "microhal.h"
 
-void delay(uint32_t ticks);
+void Delay_ticks(uint32_t ticks);
 
 #endif

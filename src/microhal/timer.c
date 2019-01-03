@@ -3,48 +3,53 @@
 
 #include "timer.h"
 
-#include "register.h"
+static volatile TimerModule_t *Timer_modules[3] =
+{
+  TIMER_MODULE_0,
+  TIMER_MODULE_1,
+  TIMER_MODULE_2
+};
 
-void timer_init(timer_channel_t channel)
+void Timer_init(TimerChannel_t channel)
 {
   (void)channel;
 
-  register_write(TIMER0_BASE + TIMER_OFFSET_MODE,      0); // Timer mode
-  register_write(TIMER0_BASE + TIMER_OFFSET_BITMODE,   3); // 32-bit
-  register_write(TIMER0_BASE + TIMER_OFFSET_PRESCALER, 0); // 16 MHz timer clock
+  Timer_modules[channel]->MODE      = 0; // Timer mode
+  Timer_modules[channel]->BITMODE   = 3; // 32-bit
+  Timer_modules[channel]->PRESCALER = 0; // 16 MHz timer clock
 }
 
-void timer_start(timer_channel_t channel)
+void Timer_start(TimerChannel_t channel)
 {
   (void)channel;
 
-  register_write(TIMER0_BASE + TIMER_OFFSET_START,     1);
+  Timer_modules[channel]->START = 1;
 }
 
-void timer_stop(timer_channel_t channel)
+void Timer_stop(TimerChannel_t channel)
 {
   (void)channel;
 
-  register_write(TIMER0_BASE + TIMER_OFFSET_STOP,      1);
+  Timer_modules[channel]->STOP = 1;
 }
 
-void timer_clear(timer_channel_t channel)
+void Timer_clear(TimerChannel_t channel)
 {
   (void)channel;
 
-  register_write(TIMER0_BASE + TIMER_OFFSET_CLEAR,     1);
+  Timer_modules[channel]->CLEAR = 1;
 }
 
-uint32_t timer_capture(timer_channel_t channel)
+uint32_t Timer_capture(TimerChannel_t channel)
 {
   (void)channel;
 
-  register_write(TIMER0_BASE + TIMER_OFFSET_CAPTURE0,  1);
+  Timer_modules[channel]->CAPTURE[0] = 1;
 
-  return register_read(TIMER0_BASE + TIMER_OFFSET_CC0);
+  return Timer_modules[channel]->CC[0];
 }
 
-uint32_t timer_ticks2microseconds(uint32_t ticks)
+uint32_t Timer_convertTicksToMicroseconds(uint32_t ticks)
 {
   return ticks >> 4;
 }

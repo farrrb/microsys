@@ -5,7 +5,7 @@
 
 static uint32_t delay_ticks = 0;
 
-void delay(uint32_t ticks)
+void Delay_ticks(uint32_t ticks)
 {
   for(uint32_t i = 0; i < ticks; i++)
   {

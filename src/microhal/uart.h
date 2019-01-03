@@ -6,8 +6,7 @@
 #ifndef UART_H__
 #define UART_H__
 
-#include <stdint.h>
-#include <stddef.h>
+#include "microhal.h"
 
 #define UART_BASE             0x40002000    ///< UART UART0 Universal Asynchronous Receiver/Transmitter
 
@@ -66,10 +65,10 @@
 #define UART_BAUDRATE_921600  0x0EBEDFA4    ///< 921600 baud (actual rate: 921585)
 #define UART_BAUDRATE_1M      0x10000000    ///< 1Mega  baud
 
-void uart_init(uint32_t baudrate);
-void uart_send_char(const char ch);
-void uart_send_string(const char *str);
-void uart_send_hex(uint32_t number);
-void uart_send_dec(int32_t number);
+void Uart_init(uint32_t baudrate);
+void Uart_sendChar(const char ch);
+void Uart_sendString(const char *str);
+void Uart_sendNumberHex(uint32_t number);
+void Uart_sendNumberDec(int32_t number);
 
 #endif

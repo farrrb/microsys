@@ -9,19 +9,16 @@
 #define UART_PIN_TX   (24)
 #define UART_PIN_RX   (25)
 
-void uart_init(uint32_t baudrate)
+void Uart_init(uint32_t baudrate)
 {
-  // pin setup
-  register_write(GPIO_REG_OUTSET,  (1 << UART_PIN_TX));
-  register_write(UART_REG_PSELTXD, UART_PIN_TX);
-
   // UART configuration
-  register_write(UART_REG_BAUDRATE, baudrate);
-  register_write(UART_REG_ENABLE,   4);
-  register_write(UART_REG_STARTTX,  1);
+  register_write(UART_REG_PSELTXD,  UART_PIN_TX); // set output pin
+  register_write(UART_REG_BAUDRATE, baudrate);    // set baud rate
+  register_write(UART_REG_ENABLE,   4);           // enable
+  register_write(UART_REG_STARTTX,  1);           // start transmission
 }
 
-void uart_send_char(const char ch)
+void Uart_sendChar(const char ch)
 {
   // write char to transmit register
   register_write(UART_REG_TXD, ch);
@@ -35,19 +32,19 @@ void uart_send_char(const char ch)
   register_write(UART_REG_TXDRDY, 0);
 }
 
-void uart_send_string(const char *str)
+void Uart_sendString(const char *str)
 {
   while (*str != '\0')
   {
-    uart_send_char(*str);
+    Uart_sendChar(*str);
     str++;
   }
 }
 
-void uart_send_hex(uint32_t number)
+void Uart_sendNumberHex(uint32_t number)
 {
-  uart_send_char('0');
-  uart_send_char('x');
+  Uart_sendChar('0');
+  Uart_sendChar('x');
 
   for(int i = 0; i < 8; i++)
   {
@@ -62,14 +59,14 @@ void uart_send_hex(uint32_t number)
       ch += 'A' - 10;
     }
 
-    uart_send_char(ch);
+    Uart_sendChar(ch);
 
     number <<= 4;
   }
 
 }
 
-void uart_send_dec(int32_t number)
+void Uart_sendNumberDec(int32_t number)
 {
   uint32_t  num, rem;
   char      str[11];
@@ -78,7 +75,7 @@ void uart_send_dec(int32_t number)
   if (number < 0)
   {
     num = -number;
-    uart_send_char('-');
+    Uart_sendChar('-');
   }
   else
   {
@@ -100,5 +97,5 @@ void uart_send_dec(int32_t number)
     }
   }
 
-  uart_send_string(&str[10 - cnt]);
+  Uart_sendString(&str[10 - cnt]);
 }

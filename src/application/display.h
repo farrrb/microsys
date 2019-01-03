@@ -8,12 +8,12 @@
 
 #include <stdint.h>
 
-void display_init(void);
-void display_clear(void);
+void Display_init(void);
+void Display_clrScreen(void);
 
-void display_update(uint32_t delay_ticks);
+void Display_update(uint32_t delay_ticks);
 
-void display_set_pixel(uint8_t x, uint8_t y);
-void display_clr_pixel(uint8_t x, uint8_t y);
+void Display_setPixel(uint8_t x, uint8_t y);
+void Display_clrPixel(uint8_t x, uint8_t y);
 
 #endif

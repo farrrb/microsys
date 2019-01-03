@@ -3,8 +3,8 @@
 ///
 /// Symbols defined by the Linker Script
 
-#ifndef LINKER_SCRIPT_H
-#define LINKER_SCRIPT_H
+#ifndef LINKER_SCRIPT_H__
+#define LINKER_SCRIPT_H__
 
 extern uint32_t __stack_top;
 extern uint32_t __stack_end__;

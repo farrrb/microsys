@@ -3,8 +3,8 @@
 ///
 /// Interrupt Vector Table - Interface Header
 
-#ifndef ISR_VECTORS_H
-#define ISR_VECTORS_H
+#ifndef ISR_VECTORS_H__
+#define ISR_VECTORS_H__
 
 // Startup Code
 void Reset_Handler(void);

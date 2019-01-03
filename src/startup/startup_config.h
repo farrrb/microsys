@@ -3,8 +3,8 @@
 ///
 /// Startup Configuration
 
-#ifndef STARTUP_CONFIG_H
-#define STARTUP_CONFIG_H
+#ifndef STARTUP_CONFIG_H__
+#define STARTUP_CONFIG_H__
 
 #define HEAP_SIZE   (1024)        ///< [Byte]
 #define STACK_SIZE  (1024)        ///< [Byte]

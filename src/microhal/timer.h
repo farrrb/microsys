@@ -6,35 +6,42 @@
 #ifndef TIMER_H__
 #define TIMER_H__
 
-#include <stdint.h>
+#include "microhal.h"
 
-#define TIMER0_BASE             0x40008000    ///< TIMER TIMER0 Timer/Counter
-#define TIMER1_BASE             0x40009000    ///< TIMER TIMER1 Timer/Counter
-#define TIMER2_BASE             0x4000A000    ///< TIMER TIMER2 Timer/Counter
+typedef struct
+{
+  volatile uint32_t START;                    ///< (Offset: 0x000) Start Timer.
+  volatile uint32_t STOP;                     ///< (Offset: 0x004) Stop Timer.
+  volatile uint32_t COUNT;                    ///< (Offset: 0x008) Increment Timer (In counter mode).
+  volatile uint32_t CLEAR;                    ///< (Offset: 0x00C) Clear timer.
+  volatile uint32_t SHUTDOWN;                 ///< (Offset: 0x010) Shutdown timer.
+  volatile uint32_t RESERVED0[11];            ///< (Offset: 0x014) Reserved space.
+  volatile uint32_t CAPTURE[4];               ///< (Offset: 0x040) Capture Timer value to CC[n] registers.
+  volatile uint32_t RESERVED1[60];            ///< (Offset: 0x044) Reserved space.
+  volatile uint32_t COMPARE[4];               ///< (Offset: 0x140) Compare event on CC[n] match.
+  volatile uint32_t RESERVED2[44];            ///< (Offset: 0x150) Reserved space.
+  volatile uint32_t SHORTS;                   ///< (Offset: 0x200) Shortcuts for Timer.
+  volatile uint32_t RESERVED3[64];            ///< (Offset: 0x204) Reserved space.
+  volatile uint32_t INTENSET;                 ///< (Offset: 0x304) Interrupt enable set register.
+  volatile uint32_t INTENCLR;                 ///< (Offset: 0x308) Interrupt enable clear register.
+  volatile uint32_t RESERVED4[126];           ///< (Offset: 0x30C) Reserved space.
+  volatile uint32_t MODE;                     ///< (Offset: 0x504) Timer Mode selection.
+  volatile uint32_t BITMODE;                  ///< (Offset: 0x508) Sets timer behaviour.
+  volatile uint32_t RESERVED5;                ///< (Offset: 0x50C) Reserved space.
+  volatile uint32_t PRESCALER;                ///< (Offset: 0x510) 4-bit prescaler to source clock frequency
+  volatile uint32_t RESERVED6[11];            ///< (Offset: 0x514) Reserved space.
+  volatile uint32_t CC[4];                    ///< (Offset: 0x540) Capture/compare registers.
+  volatile uint32_t RESERVED7[683];           ///< (Offset: 0x550) Reserved space.
+  volatile uint32_t POWER;                    ///< (Offset: 0xFFC) Peripheral power control.
+} TimerModule_t;
 
-#define TIMER_OFFSET_START      0x000         ///< Start Timer
-#define TIMER_OFFSET_STOP       0x004         ///< Stop Timer
-#define TIMER_OFFSET_COUNT      0x008         ///< Increment Timer (Counter mode only)
-#define TIMER_OFFSET_CLEAR      0x00C         ///< Clear time
-#define TIMER_OFFSET_SHUTDOWN   0x010         ///< Shut down timer
-#define TIMER_OFFSET_CAPTURE0   0x040         ///< Capture Timer value to CC[0] register
-#define TIMER_OFFSET_CAPTURE1   0x044         ///< Capture Timer value to CC[1] register
-#define TIMER_OFFSET_CAPTURE2   0x048         ///< Capture Timer value to CC[2] register
-#define TIMER_OFFSET_CAPTURE3   0x04C         ///< Capture Timer value to CC[3] register18 Timer/counter (TIMER)
-#define TIMER_OFFSET_COMPARE0   0x140         ///< Compare event on CC[0] match
-#define TIMER_OFFSET_COMPARE1   0x144         ///< Compare event on CC[1] match
-#define TIMER_OFFSET_COMPARE2   0x148         ///< Compare event on CC[2] match
-#define TIMER_OFFSET_COMPARE3   0x14C         ///< Compare event on CC[3] match
-#define TIMER_OFFSET_SHORTS     0x200         ///< Shortcut register
-#define TIMER_OFFSET_INTENSET   0x304         ///< Enable interrupt
-#define TIMER_OFFSET_INTENCLR   0x308         ///< Disable interrupt
-#define TIMER_OFFSET_MODE       0x504         ///< Timer mode selection
-#define TIMER_OFFSET_BITMODE    0x508         ///< Configure the number of bits used by the TIMER
-#define TIMER_OFFSET_PRESCALER  0x510         ///< Timer prescaler register
-#define TIMER_OFFSET_CC0        0x540         ///< Capture/Compare register 0
-#define TIMER_OFFSET_CC1        0x544         ///< Capture/Compare register 1
-#define TIMER_OFFSET_CC2        0x548         ///< Capture/Compare register 2
-#define TIMER_OFFSET_CC3        0x54C         ///< Capture/Compare register 3
+#define TIMER_BASE_0            (0x40008000)  ///< TIMER TIMER0 Timer/Counter
+#define TIMER_BASE_1            (0x40009000)  ///< TIMER TIMER1 Timer/Counter
+#define TIMER_BASE_2            (0x4000A000)  ///< TIMER TIMER2 Timer/Counter
+
+#define TIMER_MODULE_0          ((volatile TimerModule_t *)TIMER_BASE_0)
+#define TIMER_MODULE_1          ((volatile TimerModule_t *)TIMER_BASE_1)
+#define TIMER_MODULE_2          ((volatile TimerModule_t *)TIMER_BASE_2)
 
 #define TIMER_FREQUENCY         ((uint32_t)16000000) ///< Timer frequency in [MHz]
 
@@ -43,14 +50,14 @@ typedef enum
   TIMER_CH_0 = 0,
   TIMER_CH_1 = 1,
   TIMER_CH_2 = 2
-} timer_channel_t;
+} TimerChannel_t;
 
-void timer_init(timer_channel_t channel);
-void timer_start(timer_channel_t channel);
-void timer_stop(timer_channel_t channel);
-void timer_clear(timer_channel_t channel);
-uint32_t timer_capture(timer_channel_t channel);
+void Timer_init(TimerChannel_t channel);
+void Timer_start(TimerChannel_t channel);
+void Timer_stop(TimerChannel_t channel);
+void Timer_clear(TimerChannel_t channel);
+uint32_t Timer_capture(TimerChannel_t channel);
 
-uint32_t timer_ticks2microseconds(uint32_t ticks);
+uint32_t Timer_convertTicksToMicroseconds(uint32_t ticks);
 
 #endif
