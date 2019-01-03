@@ -1,7 +1,11 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
-/// Interrupt Vector Table - Interface Header
+/// \brief Interrupt vector table - interface header
+///
+////////////////////////////////////////////////////////////////////////////////
+
 
 #ifndef ISR_VECTORS_H__
 #define ISR_VECTORS_H__

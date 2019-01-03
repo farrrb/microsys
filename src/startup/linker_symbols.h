@@ -1,7 +1,11 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
-/// Symbols defined by the Linker Script
+/// \brief Symbols defined by the linker script
+///
+////////////////////////////////////////////////////////////////////////////////
+
 
 #ifndef LINKER_SCRIPT_H__
 #define LINKER_SCRIPT_H__

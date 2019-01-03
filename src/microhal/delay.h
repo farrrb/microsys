@@ -1,7 +1,10 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
-/// Blocking delay routine implementation
+/// \brief Blocking delay routine implementation
+///
+////////////////////////////////////////////////////////////////////////////////
 
 #ifndef DELAY_H__
 #define DELAY_H__

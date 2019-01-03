@@ -1,10 +1,13 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
 /// \brief  Internal implementation of the GPIO module. Do not include this file
 ///         use gpio.h instead for the public interface.
 ///         The whole purpose of this file is to do information hiding.
 ///         (private)
+///
+////////////////////////////////////////////////////////////////////////////////
 
 #ifndef GPIO_INTERNALS_H__
 #define GPIO_INTERNALS_H__

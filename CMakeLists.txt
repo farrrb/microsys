@@ -1,3 +1,8 @@
+################################################################################
+# Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
+# See provided LICENSE file for more information
+################################################################################
+
 cmake_minimum_required(VERSION 3.9.2)
 
 project(microsys)

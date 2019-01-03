@@ -1,7 +1,9 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
 /// \brief Register access (read, write) interface (public)
+////////////////////////////////////////////////////////////////////////////////
 
 #ifndef REGISTER_H__
 #define REGISTER_H__

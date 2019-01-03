@@ -1,7 +1,10 @@
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+////////////////////////////////////////////////////////////////////////////////
+/// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
-/// Configuration and Includes
+/// \brief Configuration, includes and compiler dependent defines
+///
+////////////////////////////////////////////////////////////////////////////////
 
 #ifndef MICROHAL_H__
 #define MICROHAL_H__
