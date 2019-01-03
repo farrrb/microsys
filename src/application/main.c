@@ -12,6 +12,8 @@
 
 #include "display.h"
 
+//#define MEASURE_MAIN_LOOP
+
 #define BLINK_TICKS (32768)
 #define DELAY_TICKS (10)
 
@@ -84,10 +86,13 @@ int main(void)
     }
 #endif
 
+#ifdef MEASURE_MAIN_LOOP
     Timer_value = Timer_convertTicksToMicroseconds(Timer_capture(TIMER_CH_0));
-    //Uart_sendString("\r\n");
-    //Uart_sendNumberDec(Timer_value);
+    Uart_sendString("\r\n");
+    Uart_sendNumberDec(Timer_value);
     Timer_clear(TIMER_CH_0);
+#endif
+
   }
 
   return 0;
