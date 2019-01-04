@@ -25,5 +25,6 @@ void Timer_clear(TimerChannel_t channel);
 uint32_t Timer_capture(TimerChannel_t channel);
 
 uint32_t Timer_convertTicksToMicroseconds(uint32_t ticks);
+uint32_t Timer_convertMicrosecondsToTicks(uint32_t microseconds);
 
 #endif

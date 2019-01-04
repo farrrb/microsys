@@ -21,10 +21,14 @@ The project is structured as following:
   + The temporary build directory for cmake
 - **cmake**
   + Toolchain file for arm-none-eabi-gcc
+- **gdb**
+  + Command script for gdb (startup)
 - **openocd**
   + Configuration script for OpenOCD gdb server
 - **out**
   + A temporary folder for the output files (.elf, .hex, .map, ...)
+- **scripts**
+  + In this folder there are helper scripts for starting CMake, OpenOCD, GDB, ...
 - **src**     - The source directory
   + **application**
     * The application

@@ -91,3 +91,8 @@ uint32_t Timer_convertTicksToMicroseconds(uint32_t ticks)
 {
   return ticks >> 4;
 }
+
+uint32_t Timer_convertMicrosecondsToTicks(uint32_t microseconds)
+{
+  return microseconds << 4;
+}

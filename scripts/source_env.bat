@@ -1,4 +1,10 @@
 @echo off
+rem ////////////////////////////////////////////////////////////////////////////////
+rem /// Copyright (c) 2018-2019 Fabian Zahn - 0xFAB
+rem /// See provided LICENSE file for more information
+rem ///
+rem /// Appends all development tools to current PATH variable to make them accessible
+rem ////////////////////////////////////////////////////////////////////////////////
 
 rem System Path Configuration
 set CMAKE_BIN_PATH=C:\tools\cmake-3.12.3-win64-x64\bin
@@ -11,5 +17,3 @@ set PATH=%CMAKE_BIN_PATH%;%ARMCC_BIN_PATH%;%OPOCD_BIN_PATH%;%PATH%
 
 echo Development Environment: CMake, Ninja, arm-none-eabi-gcc and OpenOCD
 
-rem Open a shell in the current working directory
-cmd /K cd %~dp0

@@ -1,1 +1,0 @@
-openocd -f microbit.cfg
