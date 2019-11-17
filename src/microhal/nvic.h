@@ -1,16 +1,22 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// Copyright (c) 2018 Fabian Zahn - 0xFAB
+/// Copyright (c) 2019 Fabian Zahn - 0xFAB
 /// See provided LICENSE file for more information
 ///
-/// \brief System clock initialization
+/// \brief NVIC control
 ///
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef CLOCK_H__
-#define CLOCK_H__
+#ifndef NVIC_H__
+#define NVIC_H__
 
 #include "microhal.h"
 
-void Clock_init(void);
+typedef enum
+{
+    NVIC_TIMER0 = 8,
+
+} NvicIrqNr_t;
+
+void Nvic_enable(NvicIrqNr_t irq_nr);
 
 #endif

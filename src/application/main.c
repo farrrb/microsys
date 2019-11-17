@@ -7,6 +7,7 @@
 
 #include "clock.h"
 #include "delay.h"
+#include "nvic.h"
 #include "timer.h"
 #include "uart.h"
 
@@ -45,7 +46,15 @@ void drawHeart(void)
   Display_setPixel(4, 2);
 }
 
-// The One and Only Main Function
+uint32_t __debug_ctr = 0;
+
+void TIMER0_IRQHandler(void)
+{
+  Timer_clearCompareEvent(TIMER_CH_0);
+
+  __debug_ctr++;
+}
+
 int main(void)
 {
   uint32_t ctr = 0;
@@ -55,7 +64,13 @@ int main(void)
 
   // initialize timer
   Timer_init(TIMER_CH_0);
+  Timer_setCompareValue(TIMER_CH_0, Timer_convertMicrosecondsToTicks(1000));
+  Timer_setCompareClear(TIMER_CH_0);
+  Timer_enableInterrupt(TIMER_CH_0);
   Timer_start(TIMER_CH_0);
+
+  // enable interrupts
+  Nvic_enable(NVIC_TIMER0);
 
   // initialize UART
   Uart_init(UART_BAUDRATE_115200);

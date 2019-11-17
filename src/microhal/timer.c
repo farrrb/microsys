@@ -5,7 +5,7 @@
 
 #include "timer.h"
 
-/// \brief TIMER register file description (valid for TIMER0, TIMER1 & TIMER2)
+/// TIMER register file description (valid for TIMER0, TIMER1 & TIMER2)
 typedef struct
 {
   volatile uint32_t START;                    ///< (Offset: 0x000) Start Timer.
@@ -50,8 +50,6 @@ static volatile TimerModule_t *Timer_modules[3] =
 
 void Timer_init(TimerChannel_t channel)
 {
-  (void)channel;
-
   Timer_modules[channel]->MODE      = 0; // Timer mode
   Timer_modules[channel]->BITMODE   = 3; // 32-bit
   Timer_modules[channel]->PRESCALER = 0; // 16 MHz timer clock. 1 Tick = 62.5 ns
@@ -59,31 +57,48 @@ void Timer_init(TimerChannel_t channel)
 
 void Timer_start(TimerChannel_t channel)
 {
-  (void)channel;
-
   Timer_modules[channel]->START = 1;
 }
 
 void Timer_stop(TimerChannel_t channel)
 {
-  (void)channel;
-
   Timer_modules[channel]->STOP = 1;
 }
 
 void Timer_clear(TimerChannel_t channel)
 {
-  (void)channel;
-
   Timer_modules[channel]->CLEAR = 1;
+}
+
+void Timer_setCompareValue(TimerChannel_t channel, uint32_t value)
+{
+  Timer_modules[channel]->CC[0] = value;
+}
+
+void Timer_setCompareClear(TimerChannel_t channel)
+{
+  Timer_modules[channel]->SHORTS = 1;
+}
+
+void Timer_clearCompareEvent(TimerChannel_t channel)
+{
+  Timer_modules[channel]->COMPARE[0] = 0;
+}
+
+void Timer_enableInterrupt(TimerChannel_t channel)
+{
+  Timer_modules[channel]->INTENSET = (1 << 16);
 }
 
 uint32_t Timer_capture(TimerChannel_t channel)
 {
-  (void)channel;
-
   Timer_modules[channel]->CAPTURE[0] = 1;
 
+  return Timer_modules[channel]->CC[0];
+}
+
+uint32_t Timer_getCaptureValue(TimerChannel_t channel)
+{
   return Timer_modules[channel]->CC[0];
 }
 

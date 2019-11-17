@@ -22,7 +22,12 @@ void Timer_init(TimerChannel_t channel);
 void Timer_start(TimerChannel_t channel);
 void Timer_stop(TimerChannel_t channel);
 void Timer_clear(TimerChannel_t channel);
+void Timer_setCompareValue(TimerChannel_t channel, uint32_t value);
+void Timer_setCompareClear(TimerChannel_t channel);
+void Timer_clearCompareEvent(TimerChannel_t channel);
+void Timer_enableInterrupt(TimerChannel_t channel);
 uint32_t Timer_capture(TimerChannel_t channel);
+uint32_t Timer_getCaptureValue(TimerChannel_t channel);
 
 uint32_t Timer_convertTicksToMicroseconds(uint32_t ticks);
 uint32_t Timer_convertMicrosecondsToTicks(uint32_t microseconds);

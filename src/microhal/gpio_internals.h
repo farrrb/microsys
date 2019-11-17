@@ -12,7 +12,7 @@
 #ifndef GPIO_INTERNALS_H__
 #define GPIO_INTERNALS_H__
 
-/// \brief GPIO register file description
+/// GPIO register file description
 typedef struct
 {
   volatile uint32_t RESERVED0[321];                   ///< (Offset: 0x000) Reserved space

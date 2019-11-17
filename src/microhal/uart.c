@@ -5,7 +5,7 @@
 
 #include "uart.h"
 
-/// \brief UART register file description
+/// UART register file description
 typedef struct
 {
   volatile uint32_t STARTRX;            ///< (Offset: 0x000) Start UART receiver.
