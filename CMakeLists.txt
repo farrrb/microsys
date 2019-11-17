@@ -18,7 +18,7 @@ set(CMAKE_C_FLAGS_RELEASE   "")
 
 # Linker Configuration
 set(LINKER_SCRIPT           "${CMAKE_CURRENT_SOURCE_DIR}/src/ld/NRF51822_QFAA_R.ld")
-set(CMAKE_EXE_LINKER_FLAGS  "-nostartfiles -nostdlib -Wl,--gc-sections -Wl,-Map=${OUTPUT_DIRECTORY}/${PROJECT_NAME}.map -T ${LINKER_SCRIPT}")
+set(CMAKE_EXE_LINKER_FLAGS  "-nostartfiles -specs=nano.specs -Wl,--gc-sections -Wl,-Map=${OUTPUT_DIRECTORY}/${PROJECT_NAME}.map -T ${LINKER_SCRIPT}")
 
 # Create Executable (*.elf)
 add_executable(${PROJECT_NAME}.elf
@@ -32,9 +32,11 @@ add_executable(${PROJECT_NAME}.elf
 
 # Add Libraries
 add_subdirectory(src/microhal)
+add_subdirectory(src/rtos)
+target_include_directories(rtos PRIVATE src/microhal)
 
 # Link Libraries (link against libgcc for software division)
-target_link_libraries(${PROJECT_NAME}.elf microhal gcc)
+target_link_libraries(${PROJECT_NAME}.elf rtos microhal gcc)
 
 # Post-Build Steps
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD COMMAND ${CMAKE_OBJCOPY} -O ihex ${OUTPUT_DIRECTORY}/${PROJECT_NAME}.elf ${OUTPUT_DIRECTORY}/${PROJECT_NAME}.hex)
