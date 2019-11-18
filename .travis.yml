@@ -6,6 +6,8 @@ notifications:
 # Enable C support
 language: c
 
+dist: bionic
+
 sudo: required
 
 addons:
@@ -21,6 +23,7 @@ compiler:
 
 os:
   - linux
+
 
 # Build steps
 script:
